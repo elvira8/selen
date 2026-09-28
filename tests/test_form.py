@@ -1,6 +1,9 @@
+import allure
 from selenium.webdriver.common.by import By
 
 
+@allure.title("Успешный вход с валидными кредами")
+@allure.description("Проверяем, что пользователь tomsmith может войти и видит сообщение об успехе")
 def test_successful_login(driver):
     # Открываем страницу логина
     driver.get("https://the-internet.herokuapp.com/login")
@@ -24,6 +27,8 @@ def test_successful_login(driver):
     assert "You logged into a secure area!" in success_message.text
 
 
+@allure.title("Неуспешный вход с неверными кредами")
+@allure.description("Проверяем, что при неверных кредах видно сообщение об ошибке")
 def test_unsuccessful_login(driver):
     # Открываем страницу логина
     driver.get("https://the-internet.herokuapp.com/login")

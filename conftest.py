@@ -2,16 +2,18 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-
 @pytest.fixture
 def driver():
-    # Selenium Manager will auto-download the appropriate driver
     options = Options()
-    options.add_argument("--headless")  # run without UI
-    options.add_argument("--no-sandbox")  # required in many CI environments
-    options.add_argument("--disable-dev-shm-usage")  # overcome limited /dev/shm size on Linux
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
 
     driver = webdriver.Chrome(options=options)
+    driver.set_page_load_timeout(120)
     driver.implicitly_wait(10)
+
     yield driver
     driver.quit()

@@ -1,0 +1,22 @@
+# Virtual environments
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Allure
+allure-results/
+allure-report/
+.allure/
+
+# PyCharm / IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
